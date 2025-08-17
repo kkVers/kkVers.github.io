@@ -1,12 +1,25 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <meta charset="utf-8">
-  
-  
-  <title>3.1具体实施部署 | Hexo</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="以下是基于“零氪开源方案”架构设计的具体实施部署方案，分开发部署（Hexo博客搭建） 和运维管理（日志清理+文件同步） 两部分展开，步骤均为实操导向：">
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.24.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js" defer></script>
+
+    <meta name="description" content="以下是基于“零氪开源方案”架构设计的具体实施部署方案，分开发部署（Hexo博客搭建） 和运维管理（日志清理+文件同步） 两部分展开，步骤均为实操导向：">
 <meta property="og:type" content="article">
 <meta property="og:title" content="3.1具体实施部署">
 <meta property="og:url" content="http://example.com/2025/08/17/3.1%E5%85%B7%E4%BD%93%E5%AE%9E%E6%96%BD%E9%83%A8%E7%BD%B2/index.html">
@@ -21,89 +34,197 @@
 <meta property="article:tag" content="博客">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/kkVers/Pictures@master//%E4%BD%A0%E7%9A%84GitHub%E7%94%A8%E6%88%B7%E5%90%8D.github.io%E5%A1%AB%E5%86%99%E7%A4%BA%E4%BE%8B202508131826933.png">
+
+
+<link rel="canonical" href="http://example.com/2025/08/17/3.1%E5%85%B7%E4%BD%93%E5%AE%9E%E6%96%BD%E9%83%A8%E7%BD%B2/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"http://example.com/2025/08/17/3.1%E5%85%B7%E4%BD%93%E5%AE%9E%E6%96%BD%E9%83%A8%E7%BD%B2/","path":"2025/08/17/3.1具体实施部署/","title":"3.1具体实施部署"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>3.1具体实施部署 | Hexo</title>
   
-    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
-  
-  
-    <link rel="shortcut icon" href="/favicon.png">
-  
-  
-  
-<link rel="stylesheet" href="/css/style.css">
+
+
+
+
+
+
+
 
   
-    
-<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+<script src="/js/utils.js" defer></script><script src="/js/motion.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script>
 
   
+
+
+
+
+
+
   
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.2.0/css/fork-awesome.min.css">
 
-<meta name="generator" content="Hexo 7.3.0"></head>
 
-<body>
-  <div id="container">
-    <div id="wrap">
-      <header id="header">
-  <div id="banner"></div>
-  <div id="header-outer" class="outer">
-    <div id="header-title" class="inner">
-      <h1 id="logo-wrap">
-        <a href="/" id="logo">Hexo</a>
-      </h1>
-      
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
     </div>
-    <div id="header-inner" class="inner">
-      <nav id="main-nav">
-        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Hexo</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+</header>
         
-          <a class="main-nav-link" href="/">Home</a>
-        
-          <a class="main-nav-link" href="/archives">Archives</a>
-        
-      </nav>
-      <nav id="sub-nav">
-        
-        
-          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
-        
-        <a class="nav-icon nav-search-btn" title="Search"><span class="fa fa-search"></span></a>
-      </nav>
-      <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%BC%80%E5%8F%91%E9%83%A8%E7%BD%B2%EF%BC%9AHexo%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E4%B8%8E%E4%B8%8A%E7%BA%BF%EF%BC%88GitHub-Pages-Vercel%EF%BC%89"><span class="nav-number">1.</span> <span class="nav-text">一、开发部署：Hexo博客搭建与上线（GitHub Pages&#x2F;Vercel）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E6%9C%AC%E5%9C%B0%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA"><span class="nav-number">1.1.</span> <span class="nav-text">1. 本地开发环境搭建</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%EF%BC%881%EF%BC%89%E5%AE%89%E8%A3%85%E5%9F%BA%E7%A1%80%E4%BE%9D%E8%B5%96"><span class="nav-number">1.1.1.</span> <span class="nav-text">（1）安装基础依赖</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-Hexo%E9%A1%B9%E7%9B%AE%E5%88%9D%E5%A7%8B%E5%8C%96%E4%B8%8E%E9%85%8D%E7%BD%AE"><span class="nav-number">1.2.</span> <span class="nav-text">2. Hexo项目初始化与配置</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%EF%BC%881%EF%BC%89%E5%AE%89%E8%A3%85Hexo%E5%B9%B6%E5%88%9D%E5%A7%8B%E5%8C%96%E9%A1%B9%E7%9B%AE"><span class="nav-number">1.2.1.</span> <span class="nav-text">（1）安装Hexo并初始化项目</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%EF%BC%882%EF%BC%89%E6%9C%AC%E5%9C%B0%E9%A2%84%E8%A7%88%E5%8D%9A%E5%AE%A2"><span class="nav-number">1.2.2.</span> <span class="nav-text">（2）本地预览博客</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E9%83%A8%E7%BD%B2%E5%88%B0GitHub-Pages"><span class="nav-number">1.3.</span> <span class="nav-text">3. 部署到GitHub Pages</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%EF%BC%881%EF%BC%89%E5%88%9B%E5%BB%BAGitHub%E4%BB%93%E5%BA%93"><span class="nav-number">1.3.1.</span> <span class="nav-text">（1）创建GitHub仓库</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%EF%BC%882%EF%BC%89%E9%85%8D%E7%BD%AEHexo%E9%83%A8%E7%BD%B2%E6%8F%92%E4%BB%B6"><span class="nav-number">1.3.2.</span> <span class="nav-text">（2）配置Hexo部署插件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%EF%BC%883%EF%BC%89%E4%BF%AE%E6%94%B9Hexo%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6"><span class="nav-number">1.3.3.</span> <span class="nav-text">（3）修改Hexo配置文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%EF%BC%884%EF%BC%89%E9%83%A8%E7%BD%B2%E5%88%B0GitHub-Pages%EF%BC%9A%E7%AE%80%E5%8D%95%E6%89%A7%E8%A1%8C"><span class="nav-number">1.3.4.</span> <span class="nav-text">（4）部署到GitHub Pages：简单执行</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E2%91%A0-%E7%A1%AE%E8%AE%A4%E6%89%A7%E8%A1%8C%E4%BD%8D%E7%BD%AE"><span class="nav-number">1.3.4.1.</span> <span class="nav-text">① 确认执行位置</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E2%91%A1-%E6%89%A7%E8%A1%8C%E9%83%A8%E7%BD%B2%E5%91%BD%E4%BB%A4"><span class="nav-number">1.3.4.2.</span> <span class="nav-text">② 执行部署命令</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E2%91%A2-%E5%A4%84%E7%90%86%E9%83%A8%E7%BD%B2%E4%B8%AD%E7%9A%84%E4%BA%A4%E4%BA%92%EF%BC%88%E5%85%B3%E9%94%AE%EF%BC%89"><span class="nav-number">1.3.4.3.</span> <span class="nav-text">③ 处理部署中的交互（关键）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E2%91%A3-%E9%AA%8C%E8%AF%81%E9%83%A8%E7%BD%B2%E7%BB%93%E6%9E%9C"><span class="nav-number">1.3.4.4.</span> <span class="nav-text">④ 验证部署结果</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%85%B3%E9%94%AE%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9"><span class="nav-number">1.3.4.5.</span> <span class="nav-text">关键注意事项</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-%E9%83%A8%E7%BD%B2%E5%88%B0Vercel%EF%BC%88%E5%A4%87%E9%80%89%E6%96%B9%E6%A1%88%EF%BC%89"><span class="nav-number">1.4.</span> <span class="nav-text">4. 部署到Vercel（备选方案）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%EF%BC%881%EF%BC%89%E6%8E%A8%E9%80%81%E9%A1%B9%E7%9B%AE%E5%88%B0GitHub%E4%BB%93%E5%BA%93"><span class="nav-number">1.4.1.</span> <span class="nav-text">（1）推送项目到GitHub仓库</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%EF%BC%882%EF%BC%89Vercel%E9%83%A8%E7%BD%B2"><span class="nav-number">1.4.2.</span> <span class="nav-text">（2）Vercel部署</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E8%BF%90%E7%BB%B4%E7%AE%A1%E7%90%86%EF%BC%9A%E6%97%A5%E5%BF%97%E6%B8%85%E7%90%86%E4%B8%8E%E6%96%87%E4%BB%B6%E5%90%8C%E6%AD%A5"><span class="nav-number">2.</span> <span class="nav-text">二、运维管理：日志清理与文件同步</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BF%99%E4%B8%80%E6%AD%A5%E7%9A%84%E7%AE%80%E5%8D%95%E8%AF%B4%E6%98%8E"><span class="nav-number">2.1.</span> <span class="nav-text">这一步的简单说明</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-Linux%E7%B3%BB%E7%BB%9F%E6%97%A5%E5%BF%97%E8%87%AA%E5%8A%A8%E6%B8%85%E7%90%86%EF%BC%88%E5%9F%BA%E4%BA%8Elogrotate%EF%BC%89"><span class="nav-number">2.2.</span> <span class="nav-text">1. Linux系统日志自动清理（基于logrotate）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%EF%BC%881%EF%BC%89%E6%A3%80%E6%9F%A5logrotate%E6%98%AF%E5%90%A6%E5%AE%89%E8%A3%85"><span class="nav-number">2.2.1.</span> <span class="nav-text">（1）检查logrotate是否安装</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%EF%BC%882%EF%BC%89%E5%88%9B%E5%BB%BA%E8%87%AA%E5%AE%9A%E4%B9%89%E6%97%A5%E5%BF%97%E6%B8%85%E7%90%86%E9%85%8D%E7%BD%AE"><span class="nav-number">2.2.2.</span> <span class="nav-text">（2）创建自定义日志清理配置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%EF%BC%883%EF%BC%89%E6%B5%8B%E8%AF%95%E9%85%8D%E7%BD%AE%E6%98%AF%E5%90%A6%E7%94%9F%E6%95%88"><span class="nav-number">2.2.3.</span> <span class="nav-text">（3）测试配置是否生效</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E6%97%A5%E5%BF%97%E6%B8%85%E7%90%86%EF%BC%88Windows-%E7%8E%AF%E5%A2%83%EF%BC%89"><span class="nav-number">2.3.</span> <span class="nav-text">一、日志清理（Windows 环境）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E7%B3%BB%E7%BB%9F-%E5%BA%94%E7%94%A8%E6%97%A5%E5%BF%97%EF%BC%88%E4%BA%8B%E4%BB%B6%E6%9F%A5%E7%9C%8B%E5%99%A8%EF%BC%89"><span class="nav-number">2.3.1.</span> <span class="nav-text">1. 系统&#x2F;应用日志（事件查看器）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E8%87%AA%E5%AE%9A%E4%B9%89%E5%BA%94%E7%94%A8%E6%97%A5%E5%BF%97%EF%BC%88%E5%A6%82-Hexo-%E7%9B%B8%E5%85%B3%E6%97%A5%E5%BF%97%EF%BC%89"><span class="nav-number">2.3.2.</span> <span class="nav-text">2. 自定义应用日志（如 Hexo 相关日志）</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E6%96%87%E4%BB%B6%E5%90%8C%E6%AD%A5%EF%BC%88Windows-%E7%8E%AF%E5%A2%83%EF%BC%8C%E5%A4%8D%E7%94%A8%E5%8E%9F%E6%96%B9%E6%A1%88%E6%A0%B8%E5%BF%83%EF%BC%89"><span class="nav-number">2.4.</span> <span class="nav-text">二、文件同步（Windows 环境，复用原方案核心）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE"><span class="nav-number">2.4.1.</span> <span class="nav-text">1. 安装与配置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E5%AE%9A%E6%97%B6%E8%87%AA%E5%8A%A8%E5%90%8C%E6%AD%A5%EF%BC%88Windows-%E4%B8%93%E5%B1%9E%EF%BC%89"><span class="nav-number">2.4.2.</span> <span class="nav-text">2. 定时自动同步（Windows 专属）</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E6%80%BB%E7%BB%93%EF%BC%88Windows-%E8%BF%90%E7%BB%B4%E6%A0%B8%E5%BF%83%E5%B7%A5%E5%85%B7%EF%BC%89"><span class="nav-number">2.5.</span> <span class="nav-text">三、总结（Windows 运维核心工具）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E6%9C%AC%E5%9C%B0%E4%B8%8E%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%96%87%E4%BB%B6%E5%90%8C%E6%AD%A5%EF%BC%88%E5%9F%BA%E4%BA%8EFreeFileSync%EF%BC%89"><span class="nav-number">2.6.</span> <span class="nav-text">2. 本地与服务器文件同步（基于FreeFileSync）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%EF%BC%881%EF%BC%89%E5%AE%89%E8%A3%85FreeFileSync"><span class="nav-number">2.6.1.</span> <span class="nav-text">（1）安装FreeFileSync</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%EF%BC%882%EF%BC%89%E9%85%8D%E7%BD%AE%E5%90%8C%E6%AD%A5%E4%BB%BB%E5%8A%A1"><span class="nav-number">2.6.2.</span> <span class="nav-text">（2）配置同步任务</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%EF%BC%883%EF%BC%89%E8%AE%BE%E7%BD%AE%E5%AE%9A%E6%97%B6%E8%87%AA%E5%8A%A8%E5%90%8C%E6%AD%A5"><span class="nav-number">2.6.3.</span> <span class="nav-text">（3）设置定时自动同步</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E9%AA%8C%E8%AF%81%E4%B8%8E%E9%97%AE%E9%A2%98%E6%8E%92%E6%9F%A5"><span class="nav-number">3.</span> <span class="nav-text">三、验证与问题排查</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">John Doe</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">4</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">categories</span>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">tags</span>
+      </div>
+  </nav>
+</div>
+
+        </div>
       </div>
     </div>
-  </div>
-</header>
 
-      <div class="outer">
-        <section id="main"><article id="post-3.1具体实施部署" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2025/08/17/3.1%E5%85%B7%E4%BD%93%E5%AE%9E%E6%96%BD%E9%83%A8%E7%BD%B2/" class="article-date">
-  <time class="dt-published" datetime="2025-08-17T07:30:00.000Z" itemprop="datePublished">2025-08-17</time>
-</a>
     
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E6%8A%80%E6%9C%AF/">技术</a>
-  </div>
+  </aside>
 
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="p-name article-title" itemprop="headline name">
-      3.1具体实施部署
-    </h1>
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
   
 
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2025/08/17/3.1%E5%85%B7%E4%BD%93%E5%AE%9E%E6%96%BD%E9%83%A8%E7%BD%B2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="John Doe">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="3.1具体实施部署 | Hexo">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          3.1具体实施部署
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
       
-        <p>以下是基于“零氪开源方案”架构设计的具体实施部署方案，分<strong>开发部署（Hexo博客搭建）</strong> 和<strong>运维管理（日志清理+文件同步）</strong> 两部分展开，步骤均为实操导向：</p>
+
+      <time title="Created: 2025-08-17 15:30:00 / Modified: 15:07:15" itemprop="dateCreated datePublished" datetime="2025-08-17T15:30:00+08:00">2025-08-17</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p>以下是基于“零氪开源方案”架构设计的具体实施部署方案，分<strong>开发部署（Hexo博客搭建）</strong> 和<strong>运维管理（日志清理+文件同步）</strong> 两部分展开，步骤均为实操导向：</p>
 <span id="more"></span>
 
 <h2 id="一、开发部署：Hexo博客搭建与上线（GitHub-Pages-Vercel）"><a href="#一、开发部署：Hexo博客搭建与上线（GitHub-Pages-Vercel）" class="headerlink" title="一、开发部署：Hexo博客搭建与上线（GitHub Pages&#x2F;Vercel）"></a>一、开发部署：Hexo博客搭建与上线（GitHub Pages&#x2F;Vercel）</h2><h3 id="1-本地开发环境搭建"><a href="#1-本地开发环境搭建" class="headerlink" title="1. 本地开发环境搭建"></a>1. 本地开发环境搭建</h3><h4 id="（1）安装基础依赖"><a href="#（1）安装基础依赖" class="headerlink" title="（1）安装基础依赖"></a>（1）安装基础依赖</h4><ul>
@@ -345,136 +466,76 @@
 </ol>
 <p>通过以上步骤，可完成零成本的Hexo博客部署及运维管理全流程，所有工具均为开源免费，适合学习者实操实践。</p>
 
-      
     </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2025/08/17/3.1%E5%85%B7%E4%BD%93%E5%AE%9E%E6%96%BD%E9%83%A8%E7%BD%B2/" data-id="cmefch4080000z4v0ea2k1ilt" data-title="3.1具体实施部署" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%8D%9A%E5%AE%A2/" rel="tag">博客</a></li></ul>
 
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Hexo/" rel="tag"># Hexo</a>
+              <a href="/tags/%E5%8D%9A%E5%AE%A2/" rel="tag"># 博客</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2025/08/13/hello-world/" rel="prev" title="Hello World">
+                  <i class="fa fa-angle-left"></i> Hello World
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2025/08/17/%E5%AE%98%E7%BD%91%E4%B8%BB%E9%A2%98%E5%BA%94%E7%94%A8%E5%AE%9E%E6%88%98/" rel="next" title="官网主题应用实战">
+                  官网主题应用实战 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
     </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2025</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">John Doe</span>
   </div>
-  
-    
-<nav id="article-nav">
-  
-  
-    <a href="/2025/08/13/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">Hello World</div>
-    </a>
-  
-</nav>
-
-  
-</article>
-
-
-</section>
-        
-          <aside id="sidebar">
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Categories</h3>
-    <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%8A%80%E6%9C%AF/">技术</a></li></ul>
-    </div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a>
   </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Tags</h3>
-    <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8D%9A%E5%AE%A2/" rel="tag">博客</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Tag Cloud</h3>
-    <div class="widget tagcloud">
-      <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/%E5%8D%9A%E5%AE%A2/" style="font-size: 10px;">博客</a>
-    </div>
-  </div>
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/08/">August 2025</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="/2025/08/17/3.1%E5%85%B7%E4%BD%93%E5%AE%9E%E6%96%BD%E9%83%A8%E7%BD%B2/">3.1具体实施部署</a>
-          </li>
-        
-          <li>
-            <a href="/2025/08/13/hello-world/">Hello World</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-
-  
-</aside>
-        
-      </div>
-      <footer id="footer">
-  
-  <div class="outer">
-    <div id="footer-info" class="inner">
-      
-      &copy; 2025 John Doe<br>
-      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
-    </div>
-  </div>
-</footer>
 
     </div>
-    <nav id="mobile-nav">
-  
-    <a href="/" class="mobile-nav-link">Home</a>
-  
-    <a href="/archives" class="mobile-nav-link">Archives</a>
-  
-</nav>
-    
-
-
-<script src="/js/jquery-3.6.4.min.js"></script>
-
-
+  </footer>
 
   
-<script src="/fancybox/jquery.fancybox.min.js"></script>
-
-
-
-
-<script src="/js/script.js"></script>
-
-
-
-
-
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
   </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
 </body>
 </html>
